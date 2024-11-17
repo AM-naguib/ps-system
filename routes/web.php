@@ -51,6 +51,10 @@ Route::controller(PanelController::class)->prefix("panel")->name("panel.")->midd
 
 Route::controller(TimerController::class)->prefix("timer")->middleware('auth.both')->name("timer.")->group(function () {
     Route::get("/", "index")->name("index");
+
+    Route::post("start/{id}", "startTime")->name("startTime");
+
+    Route::post("stop/{id}", "stopTime")->name("stopTime");
 });
 
 Route::controller(LoginController::class)->name("login.")->middleware("guest")->group(function () {
